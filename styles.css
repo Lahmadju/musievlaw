@@ -123,7 +123,6 @@ main {
     justify-content: center;
     align-items: center;
     flex-flow: column nowrap;
-    height: 3000px;
 }
 
 .main__container {
@@ -135,7 +134,15 @@ main {
     margin: 100px 0;
 }
 
-.main__container-text {
+.main__container-prev {
+    width: 1440px;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    gap: 32px;
+}
+
+.main__container-prev_text {
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
@@ -144,7 +151,7 @@ main {
     text-align: center;
 }
 
-.main__container-text > h1 {
+.main__container-prev_text > h1 {
     font-size: 24px;
     font-weight: bold;
 }
@@ -154,7 +161,11 @@ a {
     color: var(--wh);
 }
 
-.title-img {
+li:hover > a:hover {
+    text-decoration: underline;
+}
+
+.main__container-prev_img {
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
@@ -164,7 +175,7 @@ a {
     color: var(--gold);
 }
 
-.title-img > img {
+.main__container-prev_img > img {
     width: 200px;
     height: 200px;
 }
@@ -175,10 +186,6 @@ footer {
     color: var(--wh);
     display: flex;
     justify-content: center;
-    background-image: url(assets/ornament.png);
-    background-position: center;
-    background-repeat: repeat;
-    background-size: contain;
 }
 
 .footer__container {
@@ -192,8 +199,9 @@ footer {
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
+    align-items: center;
     padding: 24px 0;
-    border-bottom: 1px solid var(--gold);
+    border-bottom: 1px solid var(--wh);
     text-wrap: balance;
 }
 
@@ -224,6 +232,12 @@ footer {
     width: 32px;
     height: 32px;
     color: var(--wh);
+    transition: transform 0.3s cubic-bezier(0.25, 1.25, 0.5, 1);
+}
+
+.footer__container-row_social > a > img:hover {
+    filter: opacity(80%);
+    transform: scale(1.1) translateY(-10px);
 }
 
 .footer__container-legal {
@@ -236,6 +250,11 @@ footer {
 
 .footer__container-legal > a {
     color: var(--gray);
+}
+
+.footer__container-legal > a:hover {
+    color: var(--wh);
+    transition: 0.3s;
 }
 
 .terms { 
@@ -275,4 +294,124 @@ footer {
     flex-flow: column nowrap;
     gap: 16px;
     font-family: sans-serif;
+}
+
+.primacy { 
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.primacy__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 100px 0;
+}
+
+.primacy__container_info {
+    width: 960px;
+    display: flex;
+    flex-flow: column nowrap;
+    padding: 40px 48px;
+    background-color: var(--blue);
+    color: var(--wh);
+    border-radius: 12px;
+    gap: 12px;
+}
+
+.primacy__container_info > h1 {
+    font-size: 24px;
+    font-weight: bold;
+    border-bottom: 1px solid var(--gold);
+    padding: 0 0 18px 0;
+    margin: 0;
+}
+
+.primacy__container_info-text {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 24px;
+}
+
+.primacy__container_info-text > div {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 8px;
+    font-family: sans-serif;
+}
+
+.primacy__container_info-text > div > h2 {
+    font-family: sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.data { 
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.data__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 100px 0;
+}
+
+.data__container_info {
+    width: 960px;
+    display: flex;
+    flex-flow: column nowrap;
+    padding: 40px 48px;
+    background-color: var(--blue);
+    color: var(--wh);
+    border-radius: 12px;
+    gap: 12px;
+}
+
+.data__container_info > h1 {
+    font-size: 24px;
+    font-weight: bold;
+    border-bottom: 1px solid var(--gold);
+    padding: 0 0 18px 0;
+    margin: 0;
+}
+
+.data__container_info-text {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 24px;
+}
+
+.data__container_info-text > div > h2 {
+    font-family: serif;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.data__container_info-text_welcome {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 12px;
+}
+
+.data__container_info-text_accept {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 24px;
+}
+
+.data__container_info-text_accept > div {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 4px;
+}
+
+.data__container_info-text_accept > div > h2 {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.data__container_info-text_accept > div > p {
+    font-size: 14px;
 }
