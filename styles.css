@@ -1,13 +1,21 @@
 @import url(reset.css);
 
 :root {
-    --blue: #0B164A;
-    --gold: #A0883F;
-    --gray: #cccccc;
-    --wh: #FFF;
-    --bg: #e6e3de;
+    --color-primary: #0B164A;   /* тёмно-синий */
+    --color-accent:  #A0883F;   /* золотой акцент */
+    --color-muted:   #CCCCCC;   /* светло-серый */
+    --color-bg:      #FFFFFF;   /* фон */
+    --color-text:      #FFFFFF;   /* фон */
+    --color-blacktext:    #000000;   /* основной текст */
 }
 
+.darktheme {
+    --color-primary: #E0E4FF;   /* светло-голубой для текста/акцентов */
+    --color-accent:  #D4B95F;   /* золотой, чуть светлее для тёмного фона */
+    --color-muted:   #666666;   /* тёмно-серый для разделителей */
+    --color-bg:      #0B0B1A;   /* почти чёрный фон с оттенком синего */
+    --color-text:    #F5F5F5;   /* основной текст (почти белый) */
+}
 
 html, body {
     border: 0;
@@ -16,6 +24,16 @@ html, body {
     height: 100%;
     font-family: sans-serif;
     scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+a { 
+    text-decoration: none;
+    color: var(--color-text);
+}
+
+li:hover > a:hover {
+    text-decoration: underline;
 }
 
 header {
@@ -23,7 +41,12 @@ header {
     justify-content: center;
     align-items: center;
     width: 100%;
-    background-color: var(--blue);
+    background-color: var(--color-primary);
+}
+
+.header {
+    background: none;
+    position: absolute;
 }
 
 nav {
@@ -32,35 +55,35 @@ nav {
 
 .btn {
     padding: 10px 20px;  
-    border: 1px solid var(--blue);
+    border: 1px solid var(--color-primary);
     background: none;
     font-weight: bold;
-    color: var(--blue);
-    transition: 0.4s;
+    color: var(--color-primary);
+    transition: 0.2s;
     border-radius: 20px;
 }
 
 .btn:focus, .btn:hover, .btn:active {
-    border: 1px solid var(--blue);
-    background-color: var(--blue);
-    color: var(--wh);
+    border: 1px solid var(--color-primary);
+    background-color: var(--color-primary);
+    color: var(--color-text);
     
 }
 
 .btn-fill {
     padding: 10px 20px;
-    background-color: var(--blue);
-    border: 1px solid var(--blue);
-    color: var(--wh);
+    background-color: var(--color-primary);
+    border: 1px solid var(--color-primary);
+    color: var(--color-text);
     font-weight: bold;
-    transition: 0.4s;
+    transition: 0.2s;
     border-radius: 20px;
 }
 
 .btn-fill:focus, .btn-fill:hover, .btn-fill:active {
     background: none;
-    border: 1px solid var(--blue);
-    color: var(--blue);
+    border: 1px solid var(--color-primary);
+    color: var(--color-primary);
 }
 
 .header__container {
@@ -80,13 +103,18 @@ nav {
     flex-flow: row nowrap;
     align-items: center;
     gap: 8px;
-    color: var(--wh);
+    color: var(--color-text);
     text-transform: uppercase;
 }
 
 .header__container-logo > img {
     width: 48px;
     height: 48px;
+}
+
+.header__container-logo > h3:hover {
+    color: var(--color-accent);
+    transition: 0.2s;
 }
 
 .header__container-links {
@@ -103,6 +131,12 @@ nav {
     font-size: 16px;
 }
 
+.header__container-links > li, .header__container-links > li:hover > a:hover {
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: 0.2s;
+}
+
 .header__container-language {
     display: flex;
     flex-flow: row nowrap;
@@ -114,8 +148,12 @@ nav {
     padding: 5px;
 }
 
+.header__container-language > a:hover {
+    color: var(--color-accent);
+}
+
 .lang.active {
-    border: 1px solid var(--gold);
+    border: 1px solid var(--color-accent);
 }
 
 main {
@@ -125,65 +163,74 @@ main {
     flex-flow: column nowrap;
 }
 
+.main {
+    height: 100vh;
+    width: 100vw;
+    background-image: linear-gradient(rgba(0, 0, 0, .6), rgba(0, 0, 0, .6)), url(assets/main-bg.png);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
 .main__container {
     width: 1440px;
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
-    gap: 32px;
-    margin: 100px 0;
+    gap: 2rem;
 }
 
 .main__container-prev {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.main__container_prev-info {
     width: 1440px;
     display: flex;
     flex-flow: column nowrap;
+    justify-content: center;
     align-items: center;
-    gap: 32px;
+    gap: 2rem;
 }
 
-.main__container-prev_text {
+.main__container_prev-info_text {
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
     gap: 16px;
     width: 720px;
     text-align: center;
+    color: var(--color-text);
 }
 
-.main__container-prev_text > h1 {
+.main__container_prev-info_text > h1 {
     font-size: 24px;
     font-weight: bold;
 }
 
-a { 
-    text-decoration: none;
-    color: var(--wh);
-}
-
-li:hover > a:hover {
-    text-decoration: underline;
-}
-
-.main__container-prev_img {
+.main__container_prev-info_img {
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
-    font-size: 32px;
+    font-size: 2rem;
     font-weight: bold;
     font-family: serif;
-    color: var(--gold);
+    color: var(--color-accent);
 }
 
-.main__container-prev_img > img {
+.main__container_prev-info_img > img {
     width: 200px;
     height: 200px;
 }
 
 footer {
-    background-color: var(--blue);
+    background-color: var(--color-primary);
     width: 100%;
-    color: var(--wh);
+    color: var(--color-text);
     display: flex;
     justify-content: center;
 }
@@ -201,14 +248,14 @@ footer {
     justify-content: space-between;
     align-items: center;
     padding: 24px 0;
-    border-bottom: 1px solid var(--wh);
+    border-bottom: 1px solid var(--color-text);
     text-wrap: balance;
 }
 
 .footer__container-row_links {
     display: flex;
     flex-flow: row nowrap;
-    gap: 32px;
+    gap: 2rem;
     padding: 0;
     align-items: center;
 }
@@ -216,7 +263,7 @@ footer {
 .footer__container-row_links > li, .footer__container-row_links > li > a {
     text-decoration: none;
     list-style-type: none;
-    color: var(--wh);
+    color: var(--color-text);
     text-transform: uppercase;
     font-size: 16px;
 }
@@ -229,9 +276,9 @@ footer {
 }
 
 .footer__container-row_social > a > img {
-    width: 32px;
+    width: 2rem;
     height: 32px;
-    color: var(--wh);
+    color: var(--color-text);
     transition: transform 0.3s cubic-bezier(0.25, 1.25, 0.5, 1);
 }
 
@@ -249,11 +296,11 @@ footer {
 }
 
 .footer__container-legal > a {
-    color: var(--gray);
+    color: var(--color-muted);
 }
 
 .footer__container-legal > a:hover {
-    color: var(--wh);
+    color: var(--color-text);
     transition: 0.3s;
 }
 
@@ -275,8 +322,8 @@ footer {
     display: flex;
     flex-flow: column nowrap;
     padding: 40px 48px;
-    background-color: var(--blue);
-    color: var(--wh);
+    background-color: var(--color-primary);
+    color: var(--color-text);
     border-radius: 12px;
     gap: 12px;
 }
@@ -284,7 +331,7 @@ footer {
 .terms__container-text > h1 {
     font-size: 24px;
     font-weight: bold;
-    border-bottom: 1px solid var(--gold);
+    border-bottom: 1px solid var(--color-accent);
     padding: 0 0 18px 0;
     margin: 0;
 }
@@ -313,8 +360,8 @@ footer {
     display: flex;
     flex-flow: column nowrap;
     padding: 40px 48px;
-    background-color: var(--blue);
-    color: var(--wh);
+    background-color: var(--color-primary);
+    color: var(--color-text);
     border-radius: 12px;
     gap: 12px;
 }
@@ -322,7 +369,7 @@ footer {
 .primacy__container_info > h1 {
     font-size: 24px;
     font-weight: bold;
-    border-bottom: 1px solid var(--gold);
+    border-bottom: 1px solid var(--color-accent);
     padding: 0 0 18px 0;
     margin: 0;
 }
@@ -363,8 +410,8 @@ footer {
     display: flex;
     flex-flow: column nowrap;
     padding: 40px 48px;
-    background-color: var(--blue);
-    color: var(--wh);
+    background-color: var(--color-primary);
+    color: var(--color-text);
     border-radius: 12px;
     gap: 12px;
 }
@@ -372,7 +419,7 @@ footer {
 .data__container_info > h1 {
     font-size: 24px;
     font-weight: bold;
-    border-bottom: 1px solid var(--gold);
+    border-bottom: 1px solid var(--color-accent);
     padding: 0 0 18px 0;
     margin: 0;
 }
